@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+	<style>
+		#score{ font-size: 200px; }
+	</style>
+
+</head>
+
+<body onkeypress="play()">
+	
+	<center>
+		<audio id="song" controls autoplay>
+  			<source src="song.mp3" type="audio/mp3">
+</audio>
+		<h1 id="score"> 0 </h1>
+		<button id="adim" onclick="avance()">Add 1</button>
+		<button id="restt" onclick="reset()"> Reset </button>
+		<button id="wakhir" onclick="wakhir()">Remove 1</button>
+	</center>
+
+</body>
+
+<script>
+	{
+	const adim = document.getElementById('adim');
+	const wakhirrr = document.getElementById('wakhir');
+	const restt = document.getElementById('restt');
+    let x =0;
+    let song = document.getElementById("song")
+    
+    let score = document.getElementById("score") ;
+
+    
+	let colors = ["#F78181","#E10909","#A70C0C","red","#691A1A","#5A0505","gray","orange","yallow"];
+
+	let   colorIndex  = 0;
+
+    var avance = () =>{
+        x=x+1;
+        score.innerHTML=x; 
+        song.currentTime+=10            
+    }
+   
+    var wakhir = () =>{
+    ;
+        x=x-1;
+        score.innerHTML=x;
+        song.currentTime-=10;
+            }
+	var reset = () =>{
+        x=0
+        score.innerHTML="0";
+        song.currentTime = 0
+
+
+	}
+	adim.addEventListener('click', () => {
+  document.body.style.backgroundColor = colors[colorIndex];      
+  colorIndex = (colorIndex + 2) % colors.length
+});
+	wakhirrr.addEventListener('click', () => {
+  document.body.style.backgroundColor = colors[colorIndex];      
+  colorIndex = (colorIndex - 1) % colors.length
+});
+	restt.addEventListener('click', () => {
+  document.body.style.backgroundColor = "white";
+});
+
+}
+</script>
+
+
+
+</html>
